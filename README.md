@@ -54,11 +54,13 @@ You can run the MyTask application on either an emulator or a physical Android o
 
 ## Architecture Overview
 
-This project adheres to the **Clean Architecture** principles, aiming for separation of concerns and testability. The application is structured into distinct layers:
+This project implements a variation of the **Clean Architecture** principles, focusing on separation of concerns. The application is structured into the following layers:
 
 * **Presentation (UI):** This layer is responsible for the user interface and handling user interactions. It consists of widgets, screens, and the BLoC for managing the UI state.
 
-* **Data:** This layer is responsible for data retrieval and persistence. It implements the repository contracts defined in the Domain layer.
+* **Data:** This layer is responsible for data retrieval and persistence. It also contains the data models used throughout the application.
+    * **Models:** Represent the data structures of the application (e.g., `Task`). These are located within the `data` layer.
+    * **Repositories (Abstract):** Define contracts (interfaces) for data access, without specifying how the data is retrieved.
     * **Repositories (Implementation):** Concrete implementations of the repository interfaces, responsible for fetching data from various sources (e.g., local database, remote API).
     * **Services:** Handle communication with external data sources.
         * **App HTTP Client (Dio):** A centralized HTTP client built with the `dio` package. This abstraction provides a single point of configuration for network requests.
